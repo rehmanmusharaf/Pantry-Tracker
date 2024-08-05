@@ -29,7 +29,7 @@ export default function Home() {
         ) : (
           <h1>Hello User Logged out</h1>
         )} */}
-        <h1 className="text-white font-bold text-5xl bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
+        <h1 className="font-bold text-5xl bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
           Pantry Tracker App
         </h1>
         {/* <button onClick={put}>click me</button> */}

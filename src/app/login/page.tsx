@@ -2,12 +2,15 @@
 import React, { useState } from "react";
 import "./logincss.css";
 import { app } from "../../firebase";
+import { useRouter } from "next/navigation";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 const Login = () => {
+  const router = useRouter();
+
   const [currentpage, setCurrentpage] = useState("Login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +38,7 @@ const Login = () => {
       .then((res) => {
         console.log("Successfully Sigin the User");
         console.log("response :", res);
+        router.push("/todo"); // Navigate to a new page
       })
       .catch((error) => {
         setError("Invalid Credentials");

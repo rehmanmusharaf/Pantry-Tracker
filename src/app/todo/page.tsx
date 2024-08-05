@@ -23,8 +23,20 @@ const ToDo = () => {
   const [todo, setToDo] = useState("");
   const [error, setError] = useState<String | null>(null);
   const [todos, setTodos] = useState([]);
+  // Define the gradient text style
+  const gradientTextStyle: React.CSSProperties = {
+    background: "linear-gradient(to right, #f00, #00f)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  };
+
   async function addTodo(e: any) {
     e.preventDefault();
+    if (todo == "") {
+      console.log("Please Before Adding PUt Something");
+      setError("Empty Text Can't be Add");
+      return;
+    }
     if (user) {
       const result = await addDoc(collection(firestore, "todo"), {
         email: user.email,
@@ -32,6 +44,7 @@ const ToDo = () => {
         createdat: new Date(),
         iscomplete: false,
       });
+      setToDo("");
       getTodo();
       console.log("result is:", result);
     } else {
@@ -98,7 +111,9 @@ const ToDo = () => {
       <main>
         <div className="h-11"></div>
         <div className="login-ccontainer flex items-center flex-col min-h-80 ">
-          <h1 className=" text-white font-bold text-2xl bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
+          <h1
+            className={`font-bold text-2xl bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text `}
+          >
             {" "}
             Your Pantry Tracker
           </h1>
